@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="./js/index.js"></script>
+<script>
+    // es5中的类
+    // function Person() {
+    //     this.name = '张三';
+    //     this.age = 20;
+    // }
+    // var p = new Person();
+    // console.log(p)
+    // console.log(p.name)
+
+
+    // 构造函数和原型链里面增加方法
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        // 实例方法
+        this.run = function () {
+            alert(`今年${this.age}的${this.name}在运动了`);
+        }
+    }
+    // 原型链上的属性会被实例共享，而构造函数不会
+    Person.prototype.sex = '男';
+    // fun是静态方法
+    Person.prototype.fun = function () {
+        alert(this.name);
+    }
+    // var p = new Person();
+    // console.log(p)
+    // console.log(p.sex) // 男
+    // p.fun();
+
+
+    function Web(name, age) {
+        Person.call(this, ...arguments);
+    }
+    var a = new Web('赵四', 25);
+    // a.run();
+</script>
+
+</html>
